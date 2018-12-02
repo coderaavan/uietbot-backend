@@ -65,9 +65,13 @@
 
 				<!--  Main navigation  -->
 				<ul class="main-nav nav navbar-nav navbar-right">
-					<li><a href="#home">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="/login">Register/Sign In</a></li>
+					<li><a href="/">Home</a></li>
+					{% if b %}
+					<li><a href='/dashboard'>Dashboard</a></li>
+					<li><a href="/logout">Logout</a></li>
+					{% else %}
+					<li><a href="/login">Login/Register</a></li>
+					{% endif %}
 				</ul>
 				<!-- /Main navigation -->
 
@@ -85,7 +89,7 @@
 						<div class="home-content">
 							<h3 class="white-text">One stop platform for all college related queries</h3>
 							<p class="white-text">Students can get information regarding all upcoming assignments, exams, presentations, tests and much more</p>
-							<form action="http://localhost:5000/response" method="POST" id="query">
+							<form action="/response" method="POST" id="query">
 							<textarea class="form-control form-control-lg" type="text" placeholder="Input Your Query" name="q" id="result" rows="3" style="height:80px"></textarea><br>
 							<div onclick="startConverting();"><i class="fa fa-microphone fa-5x"></i></div><br>
 							<button class="btn btn-primary btn-lg" type="submit">Submit</button>

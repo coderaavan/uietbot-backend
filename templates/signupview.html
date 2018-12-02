@@ -21,6 +21,11 @@
 <!--===============================================================================================-->
 </head>
 <body>
+
+	<ul class="main-nav nav navbar-nav navbar-right">
+		<li><a href="/">Home</a></li>
+        <li><a href="/login">Register/Sign In</a></li>
+	</ul>
 	
 	<div class="limiter">
 		<div class="container-login100">
@@ -73,7 +78,10 @@
 							Signup
 						</button>
 					</div>
-
+					{% if cond %}
+					<br>
+					<strong><p class="text-danger">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSomething went wrong. Try Again!!!<p></strong>
+					{% endif %}
 					<div class="text-center p-t-136">
 						<a class="txt2" href="/login">
 							Log In to your Account

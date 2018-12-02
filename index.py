@@ -7,11 +7,13 @@ s = 'a'
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    b=True if s!='a' else False
+    return render_template('index.html',b=b)
 
 @app.route('/response', methods=['GET','POST'])
 def resp():
     headers={'Authorization':s}
+    b=True if s!='a' else False
     if request.method=='POST':
         string=request.form['q']
         keywords=dict()
@@ -25,7 +27,7 @@ def resp():
         print api_url
         query_data=json.loads(requests.get(api_url).text)
         print query_data
-        return render_template('result.html', qd=query_data)
+        return render_template('result.html', qd=query_data, b=b)
 
 @app.route('/signup', methods=['POST','GET'])
 def signup():
@@ -38,12 +40,12 @@ def signup():
         r=requests.post("https://uiet-bot.glitch.me/users/register",json=signupdetail, headers=headers)
         print r.status_code
         if r.status_code=="200" or r.status_code==200:
-            return "Signup Succesful!"
+            return render_template('dashboard.html')
         else:
-            return "Some Error"
+            return render_template('signupview.html', cond=True)
 
     elif request.method=='GET':
-        return render_template('signupview.html')
+        return render_template('signupview.html', cond=False)
 
 
 @app.route('/login', methods=['POST','GET'])
@@ -78,9 +80,9 @@ def uploadAsgn():
         asgndetails["date"]=request.form['date']
         r=requests.post("https://uiet-bot.glitch.me/assignments/put",json=asgndetails,headers=headers)
         if r.status_code==200 or r.status_code=="200":
-            return render_template('dashboard.html')
+            return render_template('dashboard.html', cond=False)
         else:
-            return render_template('dashboard.html')
+            return render_template('dashboard.html', cond=True)
 
 
 @app.route('/uploadExam', methods=['POST'])
@@ -95,12 +97,20 @@ def uploadExam():
         examdetails["date"]=request.form['date']
         r=requests.post("https://uiet-bot.glitch.me/exams/put",json=asgndetails,headers=headers)
         if r.status_code==200 or r.status_code=="200":
-            return render_template('dashboard.html')
+            return render_template('dashboard.html',cond=False)
         else:
-            return render_template('dashboard.html')
+            return render_template('dashboard.html',cond=True)
 
+@app.route('/logout')
+def logout():
+    global s
+    s='a'
+    b=True if s!='a' else False
+    return render_template('index.html',b=b)
 
-
+@app.route('/dashboard')
+def dash():
+    return render_template('dashboard.html')
 
 
 if __name__=='__main__':

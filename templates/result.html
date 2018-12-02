@@ -75,7 +75,17 @@
 
   <body>
 
-        <div class="container" id="tourpackages-carousel">
+    <ul class="main-nav nav navbar-nav navbar-right">
+		<li><a href="/">Home</a></li>
+		{% if b %}
+        <li><a href="/logout">Logout</a></li>
+		<li><a href="/logout">Logout</a></li>
+		{% else %}
+	    <li><a href="/login">Login/Register</a></li>
+		{% endif %}
+	</ul>
+
+    <div class="container" id="tourpackages-carousel">
       <div class="row">
         <div class="col-lg-12"><h1>Results</h1></div>
         {% for item in qd %}

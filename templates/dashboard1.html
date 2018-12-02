@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -25,38 +26,106 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="../static/img/img-01.png" alt="IMG">
-				</div>
-
-				<form class="login100-form validate-form" action="/login" method="post">
-					<span class="login100-form-title">
-						Faculty's Dashboard
-					</span>
+			
+				<span class="login100-form-title">
+					Faculty's Dashboard
+				</span>
 
 				
 
 					
 					
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" onclick="location.href='';">
-							Upload Assignment
-						</button>
-					</div>
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn" onclick="document.getElementById('id01').style.display='block'">
+						Upload Assignment
+					</button>
+					<div id="id01" class="w3-modal">
+            			<div class="w3-modal-content w3-animate-zoom w3-card-4">
+				            <header class="w3-container w3-teal"> 
+				                <span onclick="document.getElementById('id01').style.display='none'" 
+				                class="w3-button w3-display-topright">&times;</span>
+				                <h2>Assignment Details</h2>
+				            </header>
+				            <div class="w3-container">
+				                <form class="w3-container" method="POST" action="http://localhost:5000/uploadAsgn">
 
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" onclick="location.href='';">
-							Upload Exam
-						</button>
-					</div>
+				                <label>Assignment Title:</label>
+				                <input class="w3-input" type="text" name="title"><br>
+
+				                <label>Branch(in capital acronym):</label>
+				                <input class="w3-input" type="text" name="branch"><br>
+
+				                <label>Semester(in number):</label>
+				                <input class="w3-input" type="number" name="semester"><br>
+
+				                <label>Section(in capital):</label>
+				                <input class="w3-input" type="text" name="section"><br>
+
+				                <label>Details:</label>
+				                <textarea class="w3-input" name="details" rows="4"></textarea><br>
+
+				                <label>Last Submission Date(in yyyy-mm-dd):</label>
+				                <input class="w3-input" type="text" name="date"><br>
+
+				                <button class="w3-btn w3-teal" type="submit">Submit</button>
+
+				                </form>
+
+				            </div>
+            
+            			</div>
+        			</div>
+				</div>
+
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn" onclick="document.getElementById('id02').style.display='block'">
+						Upload Exam
+					</button>
+					<div id="id02" class="w3-modal">
+            			<div class="w3-modal-content w3-animate-zoom w3-card-4">
+				            <header class="w3-container w3-teal"> 
+				                <span onclick="document.getElementById('id02').style.display='none'" 
+				                class="w3-button w3-display-topright">&times;</span>
+				                <h2>Assignment Details</h2>
+				            </header>
+	            			<div class="w3-container">
+				                <form class="w3-container" method="POST" action="http://localhost:5000/uploadExam">
+
+				                <label>Exam Title:</label>
+				                <input class="w3-input" type="text" name="title"><br>
+
+				                <label>Branch(in capital acronym):</label>
+				                <input class="w3-input" type="text" name="branch"><br>
+
+				                <label>Semester(in number):</label>
+				                <input class="w3-input" type="number" name="semester"><br>
+
+				                <label>Subject:</label>
+				                <input class="w3-input" type="text" name="subject"><br>
+
+				                <label>Date(in yyyy-mm-dd):</label>
+				                <input class="w3-input" type="text" name="date"><br>
+
+				                <button class="w3-btn w3-teal" type="submit">Submit</button>
+				            	</form>
+
+            				</div>
+            			</div>
+        			</div>
+        		</div>
+					
 
 					{% if cond %}
 					<br>
-					<strong><p class="text-danger">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspYou are not logged in!!!<p></strong>
+					<br>
+					<br>
+					<br>
+
+					<strong><p class="text-danger">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspYou are not logged in!!!</p></strong>
 					{% endif %}
 
-				</form>
 			</div>
+		
 		</div>
 	</div>
 	
